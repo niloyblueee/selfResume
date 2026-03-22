@@ -1,0 +1,118 @@
+/* ═══════════════════════════════════════════════════════════════
+   CLIENTS SECTION STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+.clients {
+  position: relative;
+  padding: var(--space-24) 0;
+  overflow: hidden;
+}
+
+.clients-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  text-align: center;
+}
+
+.clients-title {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  margin-bottom: var(--space-4);
+}
+
+.clients-subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  margin-bottom: var(--space-12);
+}
+
+/* Carousel Container */
+.clients-carousel {
+  position: relative;
+  margin-top: var(--space-10);
+}
+
+/* Embla Container */
+.clients-carousel-viewport {
+  overflow: hidden;
+}
+
+.clients-carousel-container {
+  display: flex;
+  gap: var(--space-8);
+}
+
+/* Logo Item */
+.clients-logo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-8);
+  opacity: 0.5;
+  filter: grayscale(100%);
+  transition: all var(--transition-base);
+}
+
+.clients-logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+.clients-logo-image {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Gradient Fades */
+.clients-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.clients-fade-left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-void) 0%, transparent 100%);
+}
+
+.clients-fade-right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-void) 0%, transparent 100%);
+}
+
+/* Alternative: Static Grid for smaller screens */
+.clients-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-6);
+  justify-items: center;
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .clients {
+    padding: var(--section-padding-mobile) var(--space-4);
+  }
+
+  .clients-carousel {
+    display: none;
+  }
+
+  .clients-grid {
+    display: grid;
+  }
+
+  .clients-logo {
+    padding: var(--space-2);
+  }
+
+  .clients-logo-image {
+    height: 24px;
+  }
+}

@@ -1,0 +1,323 @@
+/**
+ * about.css
+ *
+ * Styles for the About Me section component.
+ * Features:
+ * - Desktop: Two-column grid layout
+ * - Mobile: Floating image with text wrap
+ *
+ * Breakpoints:
+ * - Desktop: > 768px
+ * - Mobile: <= 768px
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT SECTION - MAIN CONTAINER
+   ═══════════════════════════════════════════════════════════════ */
+.about {
+  position: relative;
+  padding: var(--section-padding) var(--space-6);
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DESKTOP LAYOUT - Two column grid
+   Hidden on mobile screens
+   ═══════════════════════════════════════════════════════════════ */
+.about-desktop {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+/* Hide mobile layout on desktop */
+.about-mobile {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   IMAGE SECTION - Desktop
+   ═══════════════════════════════════════════════════════════════ */
+.about-visual {
+  position: relative;
+}
+
+.about-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+/* Glow border effect around image */
+.about-image-glow {
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-card-border);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.about-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius-2xl);
+  background: var(--bg-card);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTENT SECTION
+   ═══════════════════════════════════════════════════════════════ */
+.about-content {
+  max-width: 540px;
+}
+
+/* Section label badge */
+.about-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+/* Section title */
+.about-title {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  margin-bottom: var(--space-6);
+  line-height: var(--leading-snug);
+}
+
+/* Description text */
+.about-description {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-8);
+  white-space: pre-line;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SKILLS SECTION
+   ═══════════════════════════════════════════════════════════════ */
+.about-skills {
+  margin-bottom: var(--space-8);
+}
+
+.about-skills-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-4);
+}
+
+.about-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Individual skill tag */
+.about-skill {
+  padding: var(--space-2) var(--space-4);
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  color: var(--cosmic-violet);
+  cursor: default;
+  transition: all var(--transition-fast);
+}
+
+.about-skill:hover {
+  background: rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 20px var(--glow-purple);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   STATS SECTION
+   ═══════════════════════════════════════════════════════════════ */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.about-stat {
+  text-align: center;
+}
+
+/* Large stat number with gradient */
+.about-stat-value {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-stat-label {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE LAYOUT (max-width: 768px)
+   Floating image with text wrap
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .about {
+    padding: var(--section-padding-mobile) var(--space-5);
+  }
+
+  /* Hide desktop grid, show mobile layout */
+  .about-desktop {
+    display: none;
+  }
+
+  .about-mobile {
+    display: block;
+  }
+
+  .about-content-mobile {
+    max-width: 100%;
+  }
+
+  /* Floating image - floats left with text wrapping */
+  .about-image-float {
+    float: left;
+    width: 140px;
+    margin: 0 var(--space-4) var(--space-3) 0;
+    shape-outside: margin-box;
+  }
+
+  .about-image-small {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    border: 2px solid rgba(124, 58, 237, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Clear float before skills section */
+  .about-clearfix {
+    clear: both;
+  }
+
+  /* Smaller title on mobile */
+  .about-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Smaller label on mobile */
+  .about-label {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Smaller description text */
+  .about-description {
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    margin-bottom: var(--space-6);
+  }
+
+  /* Smaller skills */
+  .about-skills {
+    margin-bottom: var(--space-6);
+  }
+
+  .about-skills-title {
+    font-size: var(--text-xs);
+    margin-bottom: var(--space-3);
+  }
+
+  .about-skill {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+  }
+
+  /* Stack stats or keep in row */
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+  }
+
+  .about-stat-value {
+    font-size: var(--text-xl);
+  }
+
+  .about-stat-label {
+    font-size: var(--text-xs);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   VERY SMALL SCREENS (max-width: 480px)
+   Even smaller image and fonts
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .about {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  /* Smaller floating image */
+  .about-image-float {
+    width: 120px;
+    margin: 0 var(--space-3) var(--space-2) 0;
+  }
+
+  .about-image-small {
+    height: 150px;
+    border-radius: var(--radius-lg);
+  }
+
+  /* Even smaller title */
+  .about-title {
+    font-size: var(--text-lg);
+  }
+
+  /* Smaller description */
+  .about-description {
+    font-size: var(--text-xs);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TINY SCREENS (max-width: 360px)
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 360px) {
+  .about {
+    padding: var(--space-10) var(--space-3);
+  }
+
+  /* Even smaller image on tiny screens */
+  .about-image-float {
+    width: 100px;
+  }
+
+  .about-image-small {
+    height: 130px;
+  }
+}

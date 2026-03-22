@@ -1,0 +1,46 @@
+/**
+ * LightPillar.css
+ *
+ * Styles for the Three.js LightPillar effect component.
+ * Contains container and fallback styles.
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+   FALLBACK CONTAINER
+   Shown when WebGL is not supported on the browser
+   ═══════════════════════════════════════════════════════════════ */
+.light-pillar-fallback {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #888;
+  font-size: 14px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MAIN CONTAINER
+   Container element that Three.js canvas attaches to
+   ═══════════════════════════════════════════════════════════════ */
+.light-pillar-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CANVAS ELEMENT (Three.js generated)
+   Ensure canvas fills container properly
+   ═══════════════════════════════════════════════════════════════ */
+.light-pillar-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
