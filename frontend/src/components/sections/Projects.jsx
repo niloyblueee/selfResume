@@ -59,14 +59,14 @@ const defaultProjects = [
   },
   {
     id: 6,
-    title: 'AI Writing Assistant',
-    description: 'Smart content generation tool.',
+    title: 'Branscriber',
+    description: 'A simple transcription app made for voice typing and meeting summary .',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
     category: 'SaaS',
-    tags: ['OpenAI', 'Next.js'],
+    tags: ['OpenAI', 'React','ElevenLabs'],
     size: 'small',
-    link: '#',
-    github: '#',
+    link: 'https://branscriber.xyz',
+    github: 'https://github.com/niloyblueee/BNG_transcriber_app',
   },
 ];
 

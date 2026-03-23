@@ -109,6 +109,18 @@
   white-space: pre-line;
 }
 
+.about-description a {
+  color: var(--cosmic-blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.35);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.about-description a:hover {
+  color: var(--cosmic-cyan);
+  border-bottom-color: rgba(6, 182, 212, 0.5);
+}
+
 /* ═══════════════════════════════════════════════════════════════
    SKILLS SECTION
    ═══════════════════════════════════════════════════════════════ */

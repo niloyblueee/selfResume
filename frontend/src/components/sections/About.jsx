@@ -19,24 +19,48 @@ import GlowOrb from '../effects/GlowOrb';
    SKILLS AND STATS DATA
    ═══════════════════════════════════════════════════════════════ */
 const skills = [
-  'React', 'JavaScript', 'Three.js', 'CSS/SCSS',
-  'Node.js', 'TypeScript', 'Framer Motion', 'Figma',
-  'Next.js', 'WebGL', 'Git', 'REST APIs',
-];
+    'Python',
+    'React',
+    'JavaScript',
+    'Content Strategy',
+    'Brand Identity Development',
+    'Client Communication',
+    'Project Management',
+    'Database Design',
+    'Backend Systems',
+    'CSS',
+    'Node.js',
+    'Flask',
+    'System Design',
+    'Business Workflow Optimization',
+    'Debugging & Performance Tuning',
+    'Next.js',
+    'Git',
+    'REST APIs',
+  ];
 
 const stats = [
-  { value: '5+', label: 'Years Experience' },
-  { value: '50+', label: 'Projects Completed' },
-  { value: '30+', label: 'Happy Clients' },
+  { value: '2+', label: 'Years Experience' },
+  { value: '5+', label: 'Projects Completed' },
+  { value: '5+', label: 'Happy Clients' },
 ];
 
 const About = ({
   title = 'Passionate about crafting exceptional digital experiences',
-  description = `I'm a creative developer with a passion for building immersive web experiences.
-  I blend design aesthetics with technical expertise to create websites that not only look stunning
-  but also provide seamless user experiences. My approach combines creativity with performance
-  optimization to deliver results that exceed expectations.`,
-  imageUrl = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop&crop=face',
+  description = `I'm Niloy, a Computer Science student at BRAC University and the founder of
+  (https://theluminos.org), a digital solutions firm focused on helping businesses grow through
+  technology and creative strategy.
+
+  I specialize in building custom software tailored to real business needs, from automation systems
+  to full-scale applications. As the founder of TheLumiNos, I lead end-to-end solution development,
+  from strategy and planning to execution and delivery. I focus on solving business problems at
+  their core, aligning technology, operations, and branding to create systems that scale. In
+  parallel, I direct content and digital identity strategies to help businesses stand out in
+  competitive markets.
+
+  I enjoy solving real-world problems by combining technical expertise with practical business
+  understanding, delivering solutions that are both efficient and impactful.`,
+  imageUrl = '/DP.jpg',
 }) => {
 
   /* ═══════════════════════════════════════════════════════════════
@@ -59,6 +83,30 @@ const About = ({
       filter: 'blur(0px)',
       transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
     },
+  };
+
+  const renderDescription = (text) => {
+    const splitRegex = /(https?:\/\/[^\s)]+)/g;
+    const urlRegex = /^https?:\/\/[^\s)]+$/;
+
+    return text.split(splitRegex).map((part, index) => {
+      if (urlRegex.test(part)) {
+        const linkLabel = part.includes('theluminos.org') ? 'TheLumiNos' : part;
+
+        return (
+          <a
+            key={`about-link-${index}`}
+            href={part}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {linkLabel}
+          </a>
+        );
+      }
+
+      return part;
+    });
   };
 
   return (
@@ -103,7 +151,7 @@ const About = ({
 
               {/* Description */}
               <motion.p className="about-description" variants={itemVariants}>
-                {description}
+                {renderDescription(description)}
               </motion.p>
 
               {/* Skills Section */}
@@ -157,7 +205,7 @@ const About = ({
 
               {/* Description - Wraps around the image */}
               <motion.p className="about-description" variants={itemVariants}>
-                {description}
+                {renderDescription(description)}
               </motion.p>
 
               {/* Clear float before skills */}

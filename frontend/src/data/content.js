@@ -4,9 +4,9 @@
 // ═══════════════════════════════════════════════════════════════
 
 export const siteConfig = {
-  name: 'Your Name',
-  title: 'Creative Developer',
-  email: 'hello@example.com',
+  name: 'Niloy Nil',
+  title: 'Entrepreneur',
+  email: 'niloynilblue@gmail.com',
   socials: {
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -31,22 +31,30 @@ export const heroContent = {
 
 export const aboutContent = {
   title: 'Passionate about crafting exceptional digital experiences',
-  description: `I'm a creative developer with a passion for building immersive web experiences. I blend design aesthetics with technical expertise to create websites that not only look stunning but also provide seamless user experiences.
+  description: `I'm Niloy, a Computer Science student at BRAC University and the founder & CEO of https://theluminos.org, a digital solutions firm focused on helping businesses grow through technology and creative strategy.
 
-With over 5 years of experience, I specialize in React, Three.js, and modern web technologies. My approach combines creativity with performance optimization to deliver results that exceed expectations.`,
+  I specialize in building custom software tailored to real business needs. As the CEO of TheLumiNos, I lead end-to-end solution development, from strategy and planning to execution and delivery. I focus on solving business problems at their core, aligning technology, operations, and branding to create systems that scale. In parallel, I direct content and digital identity strategies to help businesses stand out in competitive markets.
+  
+  I enjoy solving real-world problems by combining technical expertise with practical business understanding, delivering solutions that are both efficient and impactful.`,
   imageUrl:
-    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop&crop=face',
+    '/DP.jpg',
   skills: [
+    'Python',
     'React',
     'JavaScript',
-    'Three.js',
+    'Content Strategy',
+    'Brand Identity Development',
+    'Client Communication',
+    'Project Management',
+    'Database Design',
+    'Backend Systems',
     'CSS/SCSS',
     'Node.js',
-    'TypeScript',
-    'Framer Motion',
-    'Figma',
+    'Flask',
+    'System Design',
+    'Business Workflow Optimization',
+    'Debugging & Performance Tuning',
     'Next.js',
-    'WebGL',
     'Git',
     'REST APIs',
   ],
@@ -118,15 +126,14 @@ export const projectsContent = [
   },
   {
     id: 6,
-    title: 'AI Writing Assistant',
-    description: 'Smart content generation and editing tool.',
-    image:
-      'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
+    title: 'Branscriber',
+    description: 'A simple transcription app made for voice typing and meeting summary .',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
     category: 'SaaS',
-    tags: ['OpenAI', 'Next.js'],
+    tags: ['OpenAI', 'React','ElevenLabs'],
     size: 'small',
-    link: '#',
-    github: '#',
+    link: 'https://branscriber.xyz',
+    github: 'https://github.com/niloyblueee/BNG_transcriber_app',
   },
 ];
 
