@@ -16,17 +16,17 @@ export const siteConfig = {
 };
 
 export const heroContent = {
-  badge: 'Creative Developer',
-  title: 'Crafting Digital',
+  badge: 'Entrepreneur - Creative Devloper',
+  title: 'Stitching Digital',
   titleHighlight: 'Experiences',
   typingTexts: [
     'Building immersive web apps',
-    'Designing cosmic interfaces',
+    'Help Brands with their identity',
     'Creating memorable journeys',
     'Transforming ideas to reality',
   ],
   description:
-    'Transforming ideas into exceptional digital experiences through innovative design and cutting-edge technology.',
+    'Transforming ideas into exceptional digital experiences through innovative design and state of the art technology.',
 };
 
 export const aboutContent = {
