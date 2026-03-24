@@ -152,49 +152,85 @@ export const projectsContent = [
 
 export const timelineContent = [
   {
+    year: '2026',
+    entries: [
+      {
+        title: 'Social Media Moderator',
+        subtitle: 'Project Tonoya, Sunbeam Force Limited',
+        description:
+          'Duration: Feb 22, 2026 - Present. Managing social media presence with a focus on audience engagement, content coordination, and brand consistency.',
+        achievements: [
+          'Managed day-to-day social media interactions and audience responses',
+          'Ensured consistent brand tone and communication',
+          'Supported content strategy and posting workflows',
+          'Strengthened audience engagement and online presence',
+        ],
+      },
+      {
+        title: 'First Runner-Up',
+        subtitle: 'Technology Facilitated Gender-Based Violence Hackathon',
+        description:
+          'Duration: Feb 2026. Developed a technology-driven solution addressing gender-based violence issues in a competitive hackathon environment.',
+        achievements: [
+          'Built a functional solution under time pressure',
+          'Focused on social impact through technology',
+          'Recognized for innovation and execution',
+        ],
+      },
+    ],
+  },
+  {
+    year: '2025',
+    entries: [
+      {
+        title: 'Founder & CEO',
+        subtitle: 'TheLumiNos - Building digital solutions for modern businesses',
+        description:
+          'Duration: Dec 2025 - Present. Founded TheLumiNos to help businesses stand out through high-impact digital solutions. Leading strategy, client communication, and execution across web development, e-commerce platforms, custom software systems, and content creation.',
+        achievements: [
+          'Founded and scaled a digital solutions startup with a core team',
+          'Defined service offerings across web, POS, software solutions, and content creation',
+          'Led client acquisition, branding, and project delivery',
+          'Positioned TheLumiNos as a modern, results-driven tech brand',
+        ],
+      },
+      {
+        title: 'National Finalist',
+        subtitle: 'University of Dhaka - CIVIC AI showcase',
+        description:
+          'Duration: Nov 2025. Selected as a national finalist for presenting CIVIC AI, an AI-powered solution, at a prestigious showcase hosted by the University of Dhaka.',
+        achievements: [
+          'Ranked among top national-level AI projects',
+          'Designed and presented an AI-based system',
+          'Demonstrated real-world application of AI solutions',
+        ],
+      },
+      {
+        title: 'Full-Stack Developer',
+        subtitle: 'Aabita Agro Farms - End-to-end website development',
+        description:
+          'Duration: Feb 2025. Designed and developed a complete website from scratch, handling both frontend and backend, with a clean, modern interface aligned to business goals.',
+        achievements: [
+          'Delivered a fully responsive, production-ready website',
+          'Independently handled full-stack development',
+          'Transformed offline business presence into digital',
+          'Enhanced credibility through professional design',
+        ],
+      },
+    ],
+  },
+  {
     year: '2024',
     entries: [
       {
-        title: 'Senior Creative Developer',
-        subtitle: 'TechCorp Innovation Labs',
+        title: 'Web Developer',
+        subtitle: 'Sunbeam Force Limited Tonoya - Business website project',
         description:
-          'Leading development of immersive web experiences using cutting-edge technologies. Architecting scalable solutions for enterprise clients.',
+          'Duration: Apr 2024. Built the official website for the Tonoya sanitary napkin vending machine, focusing on usability, structure, and brand alignment.',
         achievements: [
-          'Led team of 5 developers',
-          'Shipped 12 major projects',
-          'Increased performance by 40%',
-        ],
-      },
-    ],
-  },
-  {
-    year: '2022',
-    entries: [
-      {
-        title: 'Full Stack Developer',
-        subtitle: 'DigitalCraft Agency',
-        description:
-          'Built and maintained web applications for diverse clients across industries. Focused on creating performant, accessible interfaces.',
-        achievements: [
-          'Developed 20+ client websites',
-          'Implemented CI/CD pipelines',
-          'Mentored junior developers',
-        ],
-      },
-    ],
-  },
-  {
-    year: '2020',
-    entries: [
-      {
-        title: 'Frontend Developer',
-        subtitle: 'StartupXYZ',
-        description:
-          'Started my professional journey building React applications. Learned the fundamentals of modern web development.',
-        achievements: [
-          'Built core product features',
-          'Learned React & Node.js',
-          'First production deployment',
+          'Delivered project within deadline and requirements',
+          'Created structured UX for better user engagement',
+          'Strengthened the company online presence',
         ],
       },
     ],
