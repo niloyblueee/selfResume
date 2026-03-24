@@ -49,7 +49,7 @@ const footerLinks = [
         ),
         external: true,
       },
-      { label: 'Resume', href: '#', external: true },
+      { label: 'Resume', href: '/cv%20updated.pdf', external: true },
     ],
   },
   {

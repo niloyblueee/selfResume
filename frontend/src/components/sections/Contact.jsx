@@ -148,7 +148,7 @@ const Contact = ({
           </AnimatedButton>
           <Button
             variant="secondary"
-            onClick={() => window.open('/resume.pdf', '_blank')}
+            onClick={() => window.open('/cv%20updated.pdf', '_blank')}
           >
             View Resume
           </Button>

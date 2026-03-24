@@ -1,8 +1,6 @@
-import { useEffect, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import { motion } from 'framer-motion';
-import SectionTitle from '../ui/SectionTitle';
 
 const defaultLogos = [
   { id: 1, name: 'React', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
@@ -18,111 +16,44 @@ const defaultLogos = [
 
 const LogoCarousel = ({ logos }) => {
   const [emblaRef] = useEmblaCarousel(
-    { loop: true, dragFree: true },
-    [AutoScroll({ playOnInit: true, speed: 1 })]
+    { loop: true, dragFree: true, align: 'start' },
+    [AutoScroll({ playOnInit: true, speed: 0.4, stopOnInteraction: false, stopOnMouseEnter: false, stopOnFocusIn: false })]
   );
 
   return (
     <div className="clients-carousel" style={{ position: 'relative', marginTop: 'var(--space-10)' }}>
       {/* Carousel */}
-      <div ref={emblaRef} style={{ overflow: 'hidden' }}>
-        <div style={{ display: 'flex', gap: 'var(--space-8)' }}>
+      <div ref={emblaRef} className="clients-carousel-viewport">
+        <div className="clients-carousel-container">
           {[...logos, ...logos].map((logo, index) => (
-            <motion.div
-              key={`${logo.id}-${index}`}
-              style={{
-                flex: '0 0 auto',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: 'var(--space-4) var(--space-8)',
-                opacity: 0.5,
-                filter: 'grayscale(100%)',
-                transition: 'all 0.3s ease',
-              }}
-              whileHover={{
-                opacity: 1,
-                filter: 'grayscale(0%)',
-              }}
-            >
+            <div key={`${logo.id}-${index}`} className="clients-logo">
               <img
                 src={logo.image}
                 alt={logo.name}
-                style={{
-                  height: '40px',
-                  width: 'auto',
-                  objectFit: 'contain',
-                }}
+                className="clients-logo-image"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Gradient Fades */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          width: '100px',
-          background: 'linear-gradient(to right, var(--bg-void) 0%, transparent 100%)',
-          pointerEvents: 'none',
-          zIndex: 2,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          right: 0,
-          width: '100px',
-          background: 'linear-gradient(to left, var(--bg-void) 0%, transparent 100%)',
-          pointerEvents: 'none',
-          zIndex: 2,
-        }}
-      />
+      <div className="clients-fade clients-fade-left" />
+      <div className="clients-fade clients-fade-right" />
     </div>
   );
 };
 
 const LogoGrid = ({ logos }) => (
-  <div
-    style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
-      gap: 'var(--space-6)',
-      justifyItems: 'center',
-      alignItems: 'center',
-      marginTop: 'var(--space-10)',
-    }}
-  >
+  <div className="clients-grid">
     {logos.map((logo) => (
-      <motion.div
-        key={logo.id}
-        style={{
-          padding: 'var(--space-2)',
-          opacity: 0.5,
-          filter: 'grayscale(100%)',
-          transition: 'all 0.3s ease',
-        }}
-        whileHover={{
-          opacity: 1,
-          filter: 'grayscale(0%)',
-        }}
-      >
+      <div key={logo.id} className="clients-logo">
         <img
           src={logo.image}
           alt={logo.name}
-          style={{
-            height: '32px',
-            width: 'auto',
-            objectFit: 'contain',
-          }}
+          className="clients-logo-image"
         />
-      </motion.div>
+      </div>
     ))}
   </div>
 );

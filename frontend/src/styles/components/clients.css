@@ -40,6 +40,7 @@
 .clients-carousel-container {
   display: flex;
   gap: var(--space-8);
+  will-change: transform;
 }
 
 /* Logo Item */
@@ -49,20 +50,28 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-4) var(--space-8);
-  opacity: 0.5;
-  filter: grayscale(100%);
-  transition: all var(--transition-base);
+  opacity: 0.7;
+  filter: grayscale(60%) brightness(1.05);
+  transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
+  will-change: transform, opacity, filter;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .clients-logo:hover {
   opacity: 1;
-  filter: grayscale(0%);
+  filter: grayscale(0%) brightness(1.05);
 }
 
 .clients-logo-image {
-  height: 32px;
+  height: 38px;
   width: auto;
+  max-width: 140px;
   object-fit: contain;
+  image-rendering: auto;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 /* Gradient Fades */
@@ -92,6 +101,7 @@
   gap: var(--space-6);
   justify-items: center;
   align-items: center;
+  margin-top: var(--space-10);
 }
 
 /* Responsive */
@@ -113,6 +123,7 @@
   }
 
   .clients-logo-image {
-    height: 24px;
+    height: 32px;
+    max-width: 120px;
   }
 }
