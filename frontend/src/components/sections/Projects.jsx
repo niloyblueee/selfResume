@@ -1,76 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Filter } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 import SectionTitle from '../ui/SectionTitle';
-import DropdownMenu from '../ui/DropdownMenu';
+import { projectsContent } from '../../data/content';
 
-const defaultProjects = [
-  {
-    id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A modern e-commerce experience with real-time inventory and seamless checkout.',
-    image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?w=800&h=600&fit=crop',
-    category: 'Web App',
-    tags: ['React', 'Node.js', 'MongoDB'],
-    size: 'large',
-    link: '#',
-    github: '#',
-  },
-  {
-    id: 2,
-    title: 'Portfolio Generator',
-    description: 'AI-powered portfolio builder for creatives.',
-    image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop',
-    category: 'SaaS',
-    tags: ['Next.js', 'AI', 'Tailwind'],
-    size: 'medium',
-    link: '#',
-  },
-  {
-    id: 3,
-    title: 'Finance Dashboard',
-    description: 'Real-time analytics and visualization platform.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-    category: 'Dashboard',
-    tags: ['React', 'D3.js', 'TypeScript'],
-    size: 'medium',
-    link: '#',
-    github: '#',
-  },
-  {
-    id: 4,
-    title: '3D Product Viewer',
-    description: 'Interactive 3D configurator for products.',
-    image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&h=600&fit=crop',
-    category: 'Web App',
-    tags: ['Three.js', 'WebGL', 'React'],
-    size: 'small',
-    link: '#',
-  },
-  {
-    id: 5,
-    title: 'Social Platform',
-    description: 'Community-driven content sharing app.',
-    image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=600&fit=crop',
-    category: 'Mobile',
-    tags: ['React Native', 'Firebase'],
-    size: 'small',
-    link: '#',
-  },
-  {
-    id: 6,
-    title: 'Branscriber',
-    description: 'A simple transcription app made for voice typing and meeting summary .',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
-    category: 'SaaS',
-    tags: ['OpenAI', 'React','ElevenLabs'],
-    size: 'small',
-    link: 'https://branscriber.xyz',
-    github: 'https://github.com/niloyblueee/BNG_transcriber_app',
-  },
-];
-
-const categories = ['All', 'Web App', 'SaaS', 'Dashboard', 'Mobile'];
+const categories = ['All', 'Web App', 'SaaS'];
 
 const ProjectCard = ({ project, index }) => {
   const gridStyles = {
@@ -257,7 +191,7 @@ const ProjectCard = ({ project, index }) => {
   );
 };
 
-const Projects = ({ projects = defaultProjects }) => {
+const Projects = ({ projects = projectsContent }) => {
   const [activeFilter, setActiveFilter] = useState('All');
 
   const filteredProjects = activeFilter === 'All'
