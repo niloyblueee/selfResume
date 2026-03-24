@@ -1,5 +1,23 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Github, Linkedin, Twitter, Instagram, Mail, ExternalLink } from 'lucide-react';
+import { Sparkles, Github, Linkedin, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
+
+const buildGmailLink = (email, subject, body) => {
+  const baseUrl = 'https://mail.google.com/mail/';
+  const params = new URLSearchParams({
+    view: 'cm',
+    fs: '1',
+    to: email,
+    su: subject,
+    body,
+  });
+  return `${baseUrl}?${params.toString()}`;
+};
+
+const buildWhatsAppLink = (phoneNumber, message) => {
+  const cleanNumber = phoneNumber.replace(/\D/g, '');
+  const params = new URLSearchParams({ text: message });
+  return `https://wa.me/${cleanNumber}?${params.toString()}`;
+};
 
 const footerLinks = [
   {
@@ -14,27 +32,57 @@ const footerLinks = [
   {
     title: 'Connect',
     links: [
-      { label: 'Contact', href: '#contact' },
-      { label: 'Email', href: 'mailto:hello@example.com' },
+      {
+        label: 'WhatsApp',
+        href: buildWhatsAppLink(
+          '01799937774',
+          'Hi Niloy, I want to discuss a project.',
+        ),
+        external: true,
+      },
+      {
+        label: 'Email',
+        href: buildGmailLink(
+          'niloynilblue@gmail.com',
+          'Project inquiry',
+          'Hi Niloy,\n\nI saw your portfolio and want to connect.\n\nProject summary:\nTimeline:\nBudget:\n\nThanks!',
+        ),
+        external: true,
+      },
       { label: 'Resume', href: '#', external: true },
     ],
   },
   {
     title: 'Social',
     links: [
-      { label: 'GitHub', href: 'https://github.com', icon: Github, external: true },
-      { label: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin, external: true },
-      { label: 'Twitter', href: 'https://twitter.com', icon: Twitter, external: true },
-      { label: 'Instagram', href: 'https://instagram.com', icon: Instagram, external: true },
+      { label: 'GitHub', href: 'https://github.com/niloyblueee', icon: Github, external: true },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/niloy-blueee-30787b294', icon: Linkedin, external: true },
+      {
+        label: 'WhatsApp',
+        href: buildWhatsAppLink(
+          '01799937774',
+          'Hi Niloy, I want to discuss a project.',
+        ),
+        icon: MessageCircle,
+        external: true,
+      },
+      { label: 'Instagram', href: 'https://www.instagram.com/nil_and_blueee?igsh=NXp0aW8wOG04ZThw&utm_source=qr', icon: Instagram, external: true },
     ],
   },
 ];
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
+  { icon: Github, href: 'https://github.com/niloyblueee', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/niloy-blueee-30787b294', label: 'LinkedIn' },
+  {
+    icon: MessageCircle,
+    href: buildWhatsAppLink(
+      '01799937774',
+      'Hi Niloy, I want to discuss a project.',
+    ),
+    label: 'WhatsApp',
+  },
+  { icon: Instagram, href: 'https://www.instagram.com/nil_and_blueee?igsh=NXp0aW8wOG04ZThw&utm_source=qr', label: 'Instagram' },
 ];
 
 const containerVariants = {
@@ -161,7 +209,7 @@ const Footer = () => {
                 lineHeight: 1.6,
               }}
             >
-              Crafting immersive digital experiences through innovative design and cutting-edge technology.
+              Stitching immersive digital experiences through innovative design and State of the art technology.
             </p>
 
             {/* Social Links */}
@@ -267,32 +315,8 @@ const Footer = () => {
           }}
         >
           <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} Niloy Blueee . All rights reserved.
           </p>
-          <div style={{ display: 'flex', gap: 'var(--space-6)' }}>
-            <a
-              href="#"
-              style={{
-                fontSize: 'var(--text-sm)',
-                color: 'var(--text-muted)',
-                textDecoration: 'none',
-                transition: 'color 0.2s ease',
-              }}
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              style={{
-                fontSize: 'var(--text-sm)',
-                color: 'var(--text-muted)',
-                textDecoration: 'none',
-                transition: 'color 0.2s ease',
-              }}
-            >
-              Terms of Service
-            </a>
-          </div>
         </motion.div>
       </motion.div>
 

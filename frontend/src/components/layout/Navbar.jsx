@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, User, Briefcase, Clock, Mail, Menu, X, Sparkles } from 'lucide-react';
 import { AnimatedButton } from '../ui/Button';
+const buildWhatsAppLink = (phoneNumber, message) => {
+  const cleanNumber = phoneNumber.replace(/\D/g, '');
+  const params = new URLSearchParams({ text: message });
+  return `https://wa.me/${cleanNumber}?${params.toString()}`;
+};
 
 const navItems = [
   { label: 'Home', href: '#home', icon: Home, gradient: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)', iconColor: 'var(--cosmic-blue)' },
@@ -100,6 +105,11 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const whatsappHref = buildWhatsAppLink(
+    '01799937774',
+    'Hi Niloy, I want to discuss a project.',
+  );
 
   // Handle scroll effects
   useEffect(() => {
@@ -239,7 +249,7 @@ const Navbar = () => {
 
         {/* CTA Button */}
         <div className="navbar-cta" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <AnimatedButton onClick={() => handleNavClick('#contact')}>
+          <AnimatedButton onClick={() => window.open(whatsappHref, '_blank', 'noopener,noreferrer')}>
             Let's Talk
           </AnimatedButton>
         </div>

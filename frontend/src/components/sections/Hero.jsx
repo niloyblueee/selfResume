@@ -3,6 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import TextType from '../ui/TextType';
 import { AnimatedButton, Button } from '../ui/Button';
 import LightPillar from '../effects/LightPillar';
+import { contactContent } from '../../data/content';
 
 const Hero = ({
   badge = 'Creative Developer',
@@ -17,6 +18,22 @@ const Hero = ({
   onContactClick,
   onProjectsClick,
 }) => {
+  const buildGmailLink = (subject, body) => {
+    const baseUrl = 'https://mail.google.com/mail/';
+    const params = new URLSearchParams({
+      view: 'cm',
+      fs: '1',
+      to: contactContent.email,
+      su: subject,
+      body,
+    });
+    return `${baseUrl}?${params.toString()}`;
+  };
+
+  const gmailHref = buildGmailLink(
+    "Let's collaborate",
+    "Hi Niloy,\n\nI saw your portfolio and want to discuss a project.\n\nProject summary:\nTimeline:\nBudget:\n\nThanks!",
+  );
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
     visible: (i) => ({
@@ -132,7 +149,7 @@ const Hero = ({
           animate="visible"
           className="hero-cta"
         >
-          <AnimatedButton onClick={onContactClick}>
+          <AnimatedButton onClick={() => window.open(gmailHref, '_blank', 'noopener,noreferrer')}>
             Let's Collaborate
           </AnimatedButton>
           <Button variant="secondary" onClick={onProjectsClick}>

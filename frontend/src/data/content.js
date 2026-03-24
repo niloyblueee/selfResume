@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════════════════
 
 export const siteConfig = {
-  name: 'Niloy Nil',
+  name: 'Niloy Blueee',
   title: 'Entrepreneur',
   email: 'niloynilblue@gmail.com',
   socials: {
@@ -242,66 +242,15 @@ export const clientsContent = {
   subtitle:
     'From design to deployment, these are the tools that power my projects.',
   logos: [
-    {
-      id: 1,
-      name: 'React',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-    },
-    {
-      id: 2,
-      name: 'Next.js',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
-    },
-    {
-      id: 3,
-      name: 'TypeScript',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-    },
-    {
-      id: 4,
-      name: 'Node.js',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-    },
-    {
-      id: 5,
-      name: 'Figma',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
-    },
-    {
-      id: 6,
-      name: 'MongoDB',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-    },
-    {
-      id: 7,
-      name: 'PostgreSQL',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-    },
-    {
-      id: 8,
-      name: 'Docker',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-    },
-    {
-      id: 9,
-      name: 'Git',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-    },
-    {
-      id: 10,
-      name: 'VS Code',
-      image:
-        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
-    },
+    { id: 1, name: 'React', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { id: 2, name: 'Node.js', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+    { id: 3, name: 'Figma', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+    { id: 4, name: 'MongoDB', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+    { id: 5, name: 'MySQL', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+    { id: 6, name: 'Meta', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg' },
+    { id: 7, name: 'Docker', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+    { id: 8, name: 'Git', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    { id: 9, name: 'Railway', image: 'https://railway.app/brand/logo-light.svg' },
   ],
 };
 
@@ -310,5 +259,5 @@ export const contactContent = {
   titleHighlight: 'Amazing Together',
   description:
     "Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your vision to life.",
-  email: 'hello@example.com',
+  email: 'niloynilblue@gmail.com',
 };

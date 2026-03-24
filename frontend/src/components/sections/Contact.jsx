@@ -4,10 +4,9 @@ import { AnimatedButton, Button } from '../ui/Button';
 import GlowOrb from '../effects/GlowOrb';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-  { icon: Mail, href: 'mailto:hello@example.com', label: 'Email' },
+  { icon: Github, href: 'https://github.com/niloyblueee', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/niloy-blueee-30787b294', label: 'LinkedIn' },
+  { icon: Mail, href: '', label: 'Email' },
 ];
 
 const Contact = ({
@@ -16,6 +15,18 @@ const Contact = ({
   description = "Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your vision to life.",
   email = 'hello@example.com',
 }) => {
+  const buildMailtoLink = (subject, body) => {
+    const params = new URLSearchParams({
+      subject,
+      body,
+    });
+    return `mailto:${email}?${params.toString()}`;
+  };
+
+  const mailtoHref = buildMailtoLink(
+    "Let's collaborate",
+    "Hi Niloy,\n\nI saw your portfolio and want to discuss a project.\n\nProject summary:\nTimeline:\nBudget:\n\nThanks!",
+  );
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -132,7 +143,7 @@ const Contact = ({
             marginBottom: 'var(--space-12)',
           }}
         >
-          <AnimatedButton onClick={() => window.location.href = `mailto:${email}`}>
+          <AnimatedButton onClick={() => window.location.href = mailtoHref}>
             Let's Collaborate
           </AnimatedButton>
           <Button
@@ -146,7 +157,7 @@ const Contact = ({
         {/* Email Link */}
         <motion.a
           variants={itemVariants}
-          href={`mailto:${email}`}
+          href={mailtoHref}
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -175,7 +186,7 @@ const Contact = ({
           {socialLinks.map(({ icon: Icon, href, label }) => (
             <motion.a
               key={label}
-              href={href}
+              href={label === 'Email' ? mailtoHref : href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
