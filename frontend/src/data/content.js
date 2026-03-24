@@ -242,15 +242,15 @@ export const clientsContent = {
   subtitle:
     'From design to deployment, these are the tools that power my projects.',
   logos: [
-    { id: 1, name: 'React', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-    { id: 2, name: 'Node.js', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-    { id: 3, name: 'Figma', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
-    { id: 4, name: 'MongoDB', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-    { id: 5, name: 'MySQL', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-    { id: 6, name: 'Meta', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg' },
-    { id: 7, name: 'Docker', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-    { id: 8, name: 'Git', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-    { id: 9, name: 'Railway', image: 'https://railway.app/brand/logo-light.svg' },
+    { id: 1, name: 'React', image: '/src/assets/clients/react.svg' },
+    { id: 2, name: 'Node.js', image: '/src/assets/clients/nodejs.svg' },
+    { id: 3, name: 'Figma', image: '/src/assets/clients/figma.svg' },
+    { id: 4, name: 'MongoDB', image: '/src/assets/clients/mongodb.svg' },
+    { id: 5, name: 'MySQL', image: '/src/assets/clients/mysql.svg' },
+    { id: 6, name: 'Meta', image: '/src/assets/clients/meta.svg' },
+    { id: 7, name: 'Docker', image: '/src/assets/clients/docker.svg' },
+    { id: 8, name: 'Git', image: '/src/assets/clients/git.svg' },
+    { id: 9, name: 'Railway', image: '/src/assets/clients/railway.svg' },
   ],
 };
 

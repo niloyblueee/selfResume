@@ -165,8 +165,6 @@ const Footer = () => {
           className="footer-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: '2fr repeat(3, 1fr)',
-            gap: 'var(--space-8)',
             marginBottom: 'var(--space-12)',
           }}
         >
@@ -213,7 +211,7 @@ const Footer = () => {
             </p>
 
             {/* Social Links */}
-            <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-6)' }}>
+            <div className="footer-socials" style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-6)' }}>
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <motion.a
                   key={label}
@@ -251,7 +249,7 @@ const Footer = () => {
           {footerLinks.map((column, index) => (
             <motion.div
               key={column.title}
-              className="footer-column"
+              className={`footer-column footer-column-${column.title.toLowerCase()}`}
               variants={itemVariants}
               custom={index}
             >
@@ -267,7 +265,7 @@ const Footer = () => {
               >
                 {column.title}
               </h4>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+              <ul className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                 {column.links.map((link) => {
                   const Icon = link.icon;
                   return (
