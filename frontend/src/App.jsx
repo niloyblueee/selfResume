@@ -79,7 +79,7 @@ function App() {
           title={contactContent.title}
           titleHighlight={contactContent.titleHighlight}
           description={contactContent.description}
-          email={contactContent.email}
+          whatsappNumber={contactContent.whatsappNumber}
         />
       </main>
 

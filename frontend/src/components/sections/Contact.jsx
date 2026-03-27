@@ -1,32 +1,41 @@
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
+import { MessageCircle, Github, Linkedin } from 'lucide-react';
 import { AnimatedButton, Button } from '../ui/Button';
 import GlowOrb from '../effects/GlowOrb';
 
-const socialLinks = [
-  { icon: Github, href: 'https://github.com/niloyblueee', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/niloy-blueee-30787b294', label: 'LinkedIn' },
-  { icon: Mail, href: '', label: 'Email' },
-];
+const WhatsAppIcon = ({ size = 20 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M12.04 2C6.54 2 2.08 6.37 2.08 11.77c0 2.12.72 4.08 1.94 5.65L2 22l4.69-1.91c1.53.82 3.29 1.29 5.35 1.29 5.5 0 9.96-4.37 9.96-9.77S17.54 2 12.04 2zm0 17.6c-1.84 0-3.53-.54-4.95-1.46l-.35-.22-2.78 1.13 1.15-2.66-.25-.35c-1.1-1.45-1.75-3.22-1.75-5.27 0-4.78 3.97-8.67 8.93-8.67 4.96 0 8.93 3.89 8.93 8.67 0 4.78-3.97 8.66-8.93 8.66zm4.92-6.47c-.27-.13-1.6-.77-1.85-.86-.25-.09-.43-.13-.6.13-.18.27-.69.86-.85 1.03-.16.18-.31.2-.58.07-.27-.13-1.12-.4-2.13-1.28-.79-.69-1.32-1.53-1.47-1.8-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.33-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.53-.44-.46-.6-.47h-.52c-.18 0-.47.07-.71.33-.25.27-.93.9-.93 2.19s.95 2.54 1.08 2.72c.13.18 1.86 2.87 4.51 4.03.63.27 1.12.44 1.5.56.63.2 1.2.17 1.65.1.5-.07 1.6-.64 1.82-1.27.22-.63.22-1.17.16-1.27-.07-.1-.25-.16-.52-.29z" />
+  </svg>
+);
 
 const Contact = ({
   title = "Let's Create Something",
   titleHighlight = 'Amazing Together',
   description = "Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your vision to life.",
-  email = 'hello@example.com',
+  whatsappNumber = '15551234567',
 }) => {
-  const buildMailtoLink = (subject, body) => {
-    const params = new URLSearchParams({
-      subject,
-      body,
-    });
-    return `mailto:${email}?${params.toString()}`;
+  const buildWhatsAppLink = (message) => {
+    const sanitizedNumber = `${whatsappNumber}`.replace(/\D/g, '');
+    const encodedMessage = encodeURIComponent(message);
+    return `https://wa.me/${sanitizedNumber}?text=${encodedMessage}`;
   };
 
-  const mailtoHref = buildMailtoLink(
-    "Let's collaborate",
-    "Hi Niloy,\n\nI saw your portfolio and want to discuss a project.\n\nProject summary:\nTimeline:\nBudget:\n\nThanks!",
+  const whatsappHref = buildWhatsAppLink(
+    "Hi Niloy, I saw your portfolio and want to discuss a project.",
   );
+
+  const socialLinks = [
+    { icon: Github, href: 'https://github.com/niloyblueee', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/niloy-blueee-30787b294', label: 'LinkedIn' },
+    { icon: WhatsAppIcon, href: whatsappHref, label: 'WhatsApp' },
+  ];
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -91,7 +100,7 @@ const Contact = ({
             marginBottom: 'var(--space-8)',
           }}
         >
-          <Mail size={14} />
+          <MessageCircle size={14} />
           Get in Touch
         </motion.span>
 
@@ -143,7 +152,7 @@ const Contact = ({
             marginBottom: 'var(--space-12)',
           }}
         >
-          <AnimatedButton onClick={() => window.location.href = mailtoHref}>
+          <AnimatedButton onClick={() => window.open(whatsappHref, '_blank', 'noopener,noreferrer')}>
             Let's Collaborate
           </AnimatedButton>
           <Button
@@ -153,25 +162,6 @@ const Contact = ({
             View Resume
           </Button>
         </motion.div>
-
-        {/* Email Link */}
-        <motion.a
-          variants={itemVariants}
-          href={mailtoHref}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 'var(--space-2)',
-            color: 'var(--text-secondary)',
-            fontSize: 'var(--text-base)',
-            textDecoration: 'none',
-            transition: 'color 0.2s ease',
-          }}
-          whileHover={{ color: 'var(--cosmic-violet)' }}
-        >
-          <Mail size={20} />
-          {email}
-        </motion.a>
 
         {/* Social Links */}
         <motion.div
@@ -183,12 +173,13 @@ const Contact = ({
             marginTop: 'var(--space-8)',
           }}
         >
-          {socialLinks.map(({ icon: Icon, href, label }) => (
+          {socialLinks.map(({ icon: Icon, href, label }) => {
+            const isExternalLink = /^https?:\/\//i.test(href);
+            return (
             <motion.a
               key={label}
-              href={label === 'Email' ? mailtoHref : href}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={href}
+              {...(isExternalLink && { target: '_blank', rel: 'noopener noreferrer' })}
               aria-label={label}
               style={{
                 width: '48px',
@@ -213,7 +204,8 @@ const Contact = ({
             >
               <Icon size={20} />
             </motion.a>
-          ))}
+            );
+          })}
         </motion.div>
       </motion.div>
     </section>
