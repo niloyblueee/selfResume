@@ -3,6 +3,23 @@
 // Edit this file to customize your portfolio content
 // ═══════════════════════════════════════════════════════════════
 
+import momentsImage from '../assets/MOMENTSS.png';
+import aabitaAgroImage from '../assets/aabitaagro.png';
+import fun370Image from '../assets/fun370.png';
+import blueeeLogo from '../assets/BlueeeLogo.ico';
+import branscriberLogo from '../assets/BranscriberLogo.png';
+import nirvhoyImage from '../assets/Nirvhoy.png';
+import civicImage from '../assets/civic.png';
+import reactLogo from '../assets/clients/react.svg';
+import nodejsLogo from '../assets/clients/nodejs.svg';
+import figmaLogo from '../assets/clients/figma.svg';
+import mongodbLogo from '../assets/clients/mongodb.svg';
+import mysqlLogo from '../assets/clients/mysql.svg';
+import metaLogo from '../assets/clients/meta.svg';
+import dockerLogo from '../assets/clients/docker.svg';
+import gitLogo from '../assets/clients/git.svg';
+import railwayLogo from '../assets/clients/railway.svg';
+
 export const siteConfig = {
   name: 'Niloy Blueee',
   title: 'Entrepreneur',
@@ -37,7 +54,7 @@ export const aboutContent = {
   
   I enjoy solving real-world problems by combining technical expertise with practical business understanding, delivering solutions that are both efficient and impactful.`,
   imageUrl:
-    '/DP.jpg',
+    `${import.meta.env.BASE_URL}DP.jpg`,
   skills: [
     'Python',
     'React',
@@ -72,7 +89,7 @@ export const projectsContent = [
     description:
       'A modern e-commerce experience with real-time inventory, seamless checkout, and beautiful product showcases.',
     image:
-      '/src/assets/MOMENTSS.png',
+      momentsImage,
     category: 'Web App',
     tags: ['React', 'Node.js', 'MySQL'],
     size: 'large',
@@ -85,7 +102,7 @@ export const projectsContent = [
     title: 'AabitaAgroFarms',
     description: 'A modern e-commerce experience for OrganicShop  with real-time inventory, seamless checkout, and beautiful product showcases.',
     image:
-      '/src/assets/aabitaagro.png',
+      aabitaAgroImage,
     category: 'Web App',
     tags: ['React', 'Node.js', 'MySQL'],
     size: 'medium',
@@ -97,7 +114,7 @@ export const projectsContent = [
     title: 'Fun370',
     description: 'A quiz app built on MYSQL queries to help university students to Pass their DBMS course',
     image:
-      '/src/assets/fun370.png',
+      fun370Image,
     category: 'Web App',
     tags: ['Express', 'MySQL', 'React'],
     size: 'small',
@@ -109,7 +126,7 @@ export const projectsContent = [
     title: 'Blueee',
     description: 'A simple Voice Assistant running locally on your pc.',
     image:
-      '/src/assets/BlueeeLogo.ico',
+      blueeeLogo,
     category: 'SaaS',
     tags: ['Python', 'Pyttsx', 'Tkinter'],
     size: 'small',
@@ -119,7 +136,7 @@ export const projectsContent = [
     id: 5,
     title: 'Branscriber',
     description: 'A simple transcription app made for voice typing and meeting summary .',
-    image: '/src/assets/BranscriberLogo.png',
+    image: branscriberLogo,
     category: 'SaaS',
     tags: ['OpenAI', 'React','ElevenLabs'],
     size: 'small',
@@ -130,7 +147,7 @@ export const projectsContent = [
     id: 6,
     title: 'Nirvhoy',
     description: 'FirstRunnerUp Project — This project was developed for the Technology-Related Gender-Based Violence Hackathon hosted by United International University on 28th February 2026. TheLumiNos was the only team selected from Brac University to represent the institution, building a tech-driven solution to combat online gender-based violence.',
-    image: '/src/assets/Nirvhoy.png', 
+    image: nirvhoyImage,
     category: 'SaaS',
     tags: ['React','Express','Mysql','NodeJs','Figma'],
     size: 'small',
@@ -141,7 +158,7 @@ export const projectsContent = [
     id: 7,
     title: 'Civic Ai',
     description: 'Finalist project of the National Innovation Challenge 2025, built to deliver a cutting-edge, citizen-centric civic reporting and validation system.',
-    image: '/src/assets/civic.png', 
+    image: civicImage,
     category: 'SaaS',
     tags: ['React','Express','Mysql','NodeJs','Figma'],
     size: 'small',
@@ -242,15 +259,15 @@ export const clientsContent = {
   subtitle:
     'From design to deployment, these are the tools that power my projects.',
   logos: [
-    { id: 1, name: 'React', image: '/src/assets/clients/react.svg' },
-    { id: 2, name: 'Node.js', image: '/src/assets/clients/nodejs.svg' },
-    { id: 3, name: 'Figma', image: '/src/assets/clients/figma.svg' },
-    { id: 4, name: 'MongoDB', image: '/src/assets/clients/mongodb.svg' },
-    { id: 5, name: 'MySQL', image: '/src/assets/clients/mysql.svg' },
-    { id: 6, name: 'Meta', image: '/src/assets/clients/meta.svg' },
-    { id: 7, name: 'Docker', image: '/src/assets/clients/docker.svg' },
-    { id: 8, name: 'Git', image: '/src/assets/clients/git.svg' },
-    { id: 9, name: 'Railway', image: '/src/assets/clients/railway.svg' },
+    { id: 1, name: 'React', image: reactLogo },
+    { id: 2, name: 'Node.js', image: nodejsLogo },
+    { id: 3, name: 'Figma', image: figmaLogo },
+    { id: 4, name: 'MongoDB', image: mongodbLogo },
+    { id: 5, name: 'MySQL', image: mysqlLogo },
+    { id: 6, name: 'Meta', image: metaLogo },
+    { id: 7, name: 'Docker', image: dockerLogo },
+    { id: 8, name: 'Git', image: gitLogo },
+    { id: 9, name: 'Railway', image: railwayLogo },
   ],
 };
 
