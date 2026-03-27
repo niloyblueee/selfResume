@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Github, Linkedin } from 'lucide-react';
 import { AnimatedButton, Button } from '../ui/Button';
@@ -21,15 +22,49 @@ const Contact = ({
   description = "Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your vision to life.",
   whatsappNumber = '15551234567',
 }) => {
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    whatsapp: '',
+    comments: '',
+  });
+
   const buildWhatsAppLink = (message) => {
     const sanitizedNumber = `${whatsappNumber}`.replace(/\D/g, '');
     const encodedMessage = encodeURIComponent(message);
     return `https://wa.me/${sanitizedNumber}?text=${encodedMessage}`;
   };
 
-  const whatsappHref = buildWhatsAppLink(
-    "Hi Niloy, I saw your portfolio and want to discuss a project.",
-  );
+  const defaultWhatsAppMessage =
+    "Hi Niloy, I saw your portfolio and want to discuss a project.";
+
+  const whatsappHref = buildWhatsAppLink(defaultWhatsAppMessage);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const message = [
+      "Hi Niloy, I want to collaborate.",
+      `Name: ${formData.name || 'N/A'}`,
+      `Email: ${formData.email || 'N/A'}`,
+      `WhatsApp: ${formData.whatsapp || 'N/A'}`,
+      `Comments: ${formData.comments || 'N/A'}`,
+    ].join('\n');
+
+    window.open(buildWhatsAppLink(message), '_blank', 'noopener,noreferrer');
+  };
+
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/niloyblueee', label: 'GitHub' },
@@ -142,26 +177,93 @@ const Contact = ({
         </motion.p>
 
         {/* CTA Button */}
-        <motion.div
-          variants={itemVariants}
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: 'var(--space-4)',
-            marginBottom: 'var(--space-12)',
-          }}
-        >
-          <AnimatedButton onClick={() => window.open(whatsappHref, '_blank', 'noopener,noreferrer')}>
-            Let's Collaborate
-          </AnimatedButton>
-          <Button
-            variant="secondary"
-            onClick={() => window.open('/cv%20updated.pdf', '_blank')}
+        {!showForm && (
+          <motion.div
+            className="contact-cta"
+            variants={itemVariants}
           >
-            View Resume
-          </Button>
-        </motion.div>
+            <AnimatedButton type="button" onClick={handleShowForm}>
+              Let's Collaborate
+            </AnimatedButton>
+            <Button
+              variant="secondary"
+              type="button"
+              onClick={() => window.open('/cv%20updated.pdf', '_blank')}
+            >
+              View Resume
+            </Button>
+          </motion.div>
+        )}
+
+        {/* Contact Form */}
+        {showForm && (
+          <motion.form
+            className="contact-form"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+            onSubmit={handleSubmit}
+          >
+            <div className="contact-form-grid">
+              <label className="contact-field">
+                <span>Name</span>
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label className="contact-field">
+                <span>Email</span>
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label className="contact-field">
+                <span>WhatsApp Number</span>
+                <input
+                  name="whatsapp"
+                  type="tel"
+                  placeholder="WhatsApp number (optional)"
+                  value={formData.whatsapp}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+
+            <label className="contact-field">
+              <span>Project Details</span>
+              <textarea
+                name="comments"
+                rows={4}
+                placeholder="Share scope, timeline, budget, and any key requirements."
+                value={formData.comments}
+                onChange={handleChange}
+              />
+            </label>
+
+            <div className="contact-form-actions">
+              <AnimatedButton type="submit">Send via WhatsApp</AnimatedButton>
+              <Button
+                variant="secondary"
+                type="button"
+                onClick={() => window.open('/cv%20updated.pdf', '_blank')}
+              >
+                View Resume
+              </Button>
+            </div>
+          </motion.form>
+        )}
 
         {/* Social Links */}
         <motion.div
