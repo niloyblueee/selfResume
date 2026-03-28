@@ -276,5 +276,5 @@ export const contactContent = {
   titleHighlight: 'Amazing Together',
   description:
     "Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your vision to life.",
-  whatsappNumber: '01799937774',
+  whatsappNumber: '+8801799937774',
 };

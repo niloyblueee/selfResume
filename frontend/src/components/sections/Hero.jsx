@@ -18,19 +18,28 @@ const Hero = ({
   onContactClick,
   onProjectsClick,
 }) => {
-  const buildGmailLink = (subject, body) => {
-    const baseUrl = 'https://mail.google.com/mail/';
-    const params = new URLSearchParams({
-      view: 'cm',
-      fs: '1',
-      to: contactContent.email,
-      su: subject,
-      body,
-    });
-    return `${baseUrl}?${params.toString()}`;
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  const buildEmailLink = (subject, body) => {
+    if (isMobile) {
+      // Mobile → use mailto (best UX)
+      const params = new URLSearchParams({ subject, body });
+      return `mailto:${contactContent.email}?${params.toString()}`;
+    } else {
+      // Desktop → Gmail web is fine
+      const baseUrl = 'https://mail.google.com/mail/';
+      const params = new URLSearchParams({
+        view: 'cm',
+        fs: '1',
+        to: contactContent.email,
+        su: subject,
+        body,
+      });
+      return `${baseUrl}?${params.toString()}`;
+    }
   };
 
-  const gmailHref = buildGmailLink(
+  const emailHref = buildEmailLink(
     "Let's collaborate",
     "Hi Niloy,\n\nI saw your portfolio and want to discuss a project.\n\nProject summary:\nTimeline:\nBudget:\n\nThanks!",
   );
@@ -149,7 +158,7 @@ const Hero = ({
           animate="visible"
           className="hero-cta"
         >
-          <AnimatedButton onClick={() => window.open(gmailHref, '_blank', 'noopener,noreferrer')}>
+          <AnimatedButton onClick={() => window.open(emailHref, isMobile ? '_self' : '_blank', 'noopener,noreferrer')}>
             Let's Collaborate
           </AnimatedButton>
           <Button variant="secondary" onClick={onProjectsClick}>
