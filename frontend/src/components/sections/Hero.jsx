@@ -18,13 +18,16 @@ const Hero = ({
   onContactClick,
   onProjectsClick,
 }) => {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+  const isTouchMac = typeof navigator !== 'undefined' && /Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1;
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) || isTouchMac;
+
+  const encodeMailtoParam = (value) => encodeURIComponent(value ?? '').replace(/\+/g, '%20');
 
   const buildEmailLink = (subject, body) => {
     if (isMobile) {
       // Mobile → use mailto (best UX)
-      const params = new URLSearchParams({ subject, body });
-      return `mailto:${contactContent.email}?${params.toString()}`;
+      return `mailto:${contactContent.email}?subject=${encodeMailtoParam(subject)}&body=${encodeMailtoParam(body)}`;
     } else {
       // Desktop → Gmail web is fine
       const baseUrl = 'https://mail.google.com/mail/';
@@ -158,7 +161,15 @@ const Hero = ({
           animate="visible"
           className="hero-cta"
         >
-          <AnimatedButton onClick={() => window.open(emailHref, isMobile ? '_self' : '_blank', 'noopener,noreferrer')}>
+          <AnimatedButton
+            onClick={() => {
+              if (isMobile) {
+                window.location.href = emailHref;
+                return;
+              }
+              window.open(emailHref, '_blank', 'noopener,noreferrer');
+            }}
+          >
             Let's Collaborate
           </AnimatedButton>
           <Button variant="secondary" onClick={onProjectsClick}>

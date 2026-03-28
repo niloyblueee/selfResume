@@ -1,22 +1,35 @@
 import { motion } from 'framer-motion';
 import { Sparkles, Github, Linkedin, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
 
-const buildGmailLink = (email, subject, body) => {
-  const baseUrl = 'https://mail.google.com/mail/';
-  const params = new URLSearchParams({
-    view: 'cm',
-    fs: '1',
-    to: email,
-    su: subject,
-    body,
-  });
-  return `${baseUrl}?${params.toString()}`;
+const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+const isTouchMac = typeof navigator !== 'undefined' && /Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1;
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) || isTouchMac;
+const encodeMailtoParam = (value) => encodeURIComponent(value ?? '').replace(/\+/g, '%20');
+
+const buildEmailLink = (email, subject, body) => {
+  if (isMobile) {
+    return `mailto:${email}?subject=${encodeMailtoParam(subject)}&body=${encodeMailtoParam(body)}`;
+  } else {
+    const baseUrl = 'https://mail.google.com/mail/';
+    const params = new URLSearchParams({
+      view: 'cm',
+      fs: '1',
+      to: email,
+      su: subject,
+      body,
+    });
+    return `${baseUrl}?${params.toString()}`;
+  }
 };
 
 const buildWhatsAppLink = (phoneNumber, message) => {
   const cleanNumber = phoneNumber.replace(/\D/g, '');
-  const params = new URLSearchParams({ text: message });
-  return `https://wa.me/${cleanNumber}?${params.toString()}`;
+  const encodedMessage = encodeURIComponent(message ?? '');
+  if (isMobile) {
+    return `whatsapp://send?phone=${cleanNumber}&text=${encodedMessage}`;
+  } else {
+    return `https://web.whatsapp.com/send?phone=${cleanNumber}&text=${encodedMessage}`;
+  }
 };
 
 const footerLinks = [
@@ -38,16 +51,16 @@ const footerLinks = [
           '01799937774',
           'Hi Niloy, I want to discuss a project.',
         ),
-        external: true,
+        external: !isMobile,
       },
       {
         label: 'Email',
-        href: buildGmailLink(
+        href: buildEmailLink(
           'niloynilblue@gmail.com',
           'Project inquiry',
           'Hi Niloy,\n\nI saw your portfolio and want to connect.\n\nProject summary:\nTimeline:\nBudget:\n\nThanks!',
         ),
-        external: true,
+        external: !isMobile,
       },
       { label: 'Resume', href: '/cv%20updated.pdf', external: true },
     ],
@@ -60,11 +73,11 @@ const footerLinks = [
       {
         label: 'WhatsApp',
         href: buildWhatsAppLink(
-          '01799937774',
+          '+8801799937774',
           'Hi Niloy, I want to discuss a project.',
         ),
         icon: MessageCircle,
-        external: true,
+        external: !isMobile,
       },
       { label: 'Instagram', href: 'https://www.instagram.com/nil_and_blueee?igsh=NXp0aW8wOG04ZThw&utm_source=qr', icon: Instagram, external: true },
     ],
@@ -77,7 +90,7 @@ const socialLinks = [
   {
     icon: MessageCircle,
     href: buildWhatsAppLink(
-      '01799937774',
+      '+8801799937774',
       'Hi Niloy, I want to discuss a project.',
     ),
     label: 'WhatsApp',

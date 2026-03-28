@@ -2,10 +2,20 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, User, Briefcase, Clock, Mail, Menu, X, Sparkles } from 'lucide-react';
 import { AnimatedButton } from '../ui/Button';
+
+const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+const isTouchMac = typeof navigator !== 'undefined' && /Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1;
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) || isTouchMac;
+
 const buildWhatsAppLink = (phoneNumber, message) => {
   const cleanNumber = phoneNumber.replace(/\D/g, '');
-  const params = new URLSearchParams({ text: message });
-  return `https://wa.me/${cleanNumber}?${params.toString()}`;
+  const encodedMessage = encodeURIComponent(message ?? '');
+
+  if (isMobile) {
+    return `whatsapp://send?phone=${cleanNumber}&text=${encodedMessage}`;
+  }
+
+  return `https://web.whatsapp.com/send?phone=${cleanNumber}&text=${encodedMessage}`;
 };
 
 const navItems = [
