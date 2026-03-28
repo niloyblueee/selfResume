@@ -24,17 +24,16 @@ const Hero = ({
 
   const encodeMailtoParam = (value) => encodeURIComponent(value ?? '').replace(/\+/g, '%20');
 
-  const buildEmailLink = (subject, body) => {
+
+  const buildEmailLink = (email, subject, body) => {
     if (isMobile) {
-      // Mobile → use mailto (best UX)
-      return `mailto:${contactContent.email}?subject=${encodeMailtoParam(subject)}&body=${encodeMailtoParam(body)}`;
+      return `mailto:${email}?subject=${encodeMailtoParam(subject)}&body=${encodeMailtoParam(body)}`;
     } else {
-      // Desktop → Gmail web is fine
       const baseUrl = 'https://mail.google.com/mail/';
       const params = new URLSearchParams({
         view: 'cm',
         fs: '1',
-        to: contactContent.email,
+        to: email,
         su: subject,
         body,
       });
@@ -42,9 +41,11 @@ const Hero = ({
     }
   };
 
+
   const emailHref = buildEmailLink(
-    "Let's collaborate",
-    "Hi Niloy,\n\nI saw your portfolio and want to discuss a project.\n\nProject summary:\nTimeline:\nBudget:\n\nThanks!",
+          'niloynilblue@gmail.com',
+          'Project inquiry',
+          'Hi Niloy,\n\nI saw your portfolio and want to connect.\n\nProject summary:\nTimeline:\nBudget:\n\nThanks!',
   );
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },

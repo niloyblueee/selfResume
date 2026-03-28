@@ -48,7 +48,7 @@ const footerLinks = [
       {
         label: 'WhatsApp',
         href: buildWhatsAppLink(
-          '01799937774',
+          '+8801799937774',
           'Hi Niloy, I want to discuss a project.',
         ),
         external: !isMobile,
