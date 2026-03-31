@@ -23,6 +23,8 @@ const Contact = ({
   whatsappNumber = '15551234567',
 }) => {
   const [showForm, setShowForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,23 +45,53 @@ const Contact = ({
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    if (submitStatus.type) {
+      setSubmitStatus({ type: '', message: '' });
+    }
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const message = [
-      "Hi Niloy, I want to collaborate.",
-      `Name: ${formData.name || 'N/A'}`,
-      `Email: ${formData.email || 'N/A'}`,
-      `WhatsApp: ${formData.whatsapp || 'N/A'}`,
-      `Comments: ${formData.comments || 'N/A'}`,
-    ].join('\n');
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
 
-    window.open(buildWhatsAppLink(message), '_blank', 'noopener,noreferrer');
+    try {
+      const response = await fetch('/api/send-telegram', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || 'Unable to send your message right now.');
+      }
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Your details were sent successfully. I will get back to you soon.',
+      });
+      setFormData({
+        name: '',
+        email: '',
+        whatsapp: '',
+        comments: '',
+      });
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: error.message || 'Something went wrong while sending your details.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleShowForm = () => {
@@ -230,11 +262,11 @@ const Contact = ({
               </label>
 
               <label className="contact-field">
-                <span>WhatsApp Number</span>
+                <span>Number</span>
                 <input
                   name="whatsapp"
                   type="tel"
-                  placeholder="WhatsApp number (optional)"
+                  placeholder="WhatsApp/Telegram number (optional)"
                   value={formData.whatsapp}
                   onChange={handleChange}
                 />
@@ -253,7 +285,9 @@ const Contact = ({
             </label>
 
             <div className="contact-form-actions">
-              <AnimatedButton type="submit">Send via WhatsApp</AnimatedButton>
+              <AnimatedButton type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : "Let's Collaborate"}
+              </AnimatedButton>
               <Button
                 variant="secondary"
                 type="button"
@@ -262,6 +296,18 @@ const Contact = ({
                 View Resume
               </Button>
             </div>
+
+            {submitStatus.message && (
+              <p
+                style={{
+                  marginTop: 'var(--space-4)',
+                  fontSize: 'var(--text-sm)',
+                  color: submitStatus.type === 'success' ? 'var(--accent-cyan)' : 'var(--accent-pink)',
+                }}
+              >
+                {submitStatus.message}
+              </p>
+            )}
           </motion.form>
         )}
 
