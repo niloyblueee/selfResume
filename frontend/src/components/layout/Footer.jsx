@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Github, Linkedin, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
 
 const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
 const isTouchMac = typeof navigator !== 'undefined' && /Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1;
@@ -185,10 +185,11 @@ const Footer = () => {
           <motion.div className="footer-brand" variants={itemVariants}>
             <a
               href="#home"
+              className="footer-logo"
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.5rem',
+                gap: '0',
                 fontFamily: 'var(--font-display)',
                 fontSize: 'var(--text-xl)',
                 fontWeight: 700,
@@ -197,20 +198,11 @@ const Footer = () => {
                 marginBottom: 'var(--space-4)',
               }}
             >
-              <div
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  background: 'var(--gradient-hero)',
-                  borderRadius: 'var(--radius-lg)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Sparkles size={18} color="white" />
-              </div>
-              Portfolio
+              <img
+                src="/logo.svg"
+                alt="Main logo"
+                className="footer-logo-image"
+              />
             </a>
             <p
               style={{

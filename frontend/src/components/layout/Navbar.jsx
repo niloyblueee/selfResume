@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, User, Briefcase, Clock, Mail, Menu, X, Sparkles } from 'lucide-react';
+import { Home, User, Briefcase, Clock, Mail, Menu, X } from 'lucide-react';
 import { AnimatedButton } from '../ui/Button';
 
 const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
@@ -188,7 +188,7 @@ const Navbar = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem',
+            gap: '0',
             fontFamily: 'var(--font-display)',
             fontSize: 'var(--text-xl)',
             fontWeight: 700,
@@ -196,20 +196,12 @@ const Navbar = () => {
             textDecoration: 'none',
           }}
         >
-          <div
-            style={{
-              width: '32px',
-              height: '32px',
-              background: 'var(--gradient-hero)',
-              borderRadius: 'var(--radius-lg)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Sparkles size={18} color="white" />
-          </div>
-          Portfolio
+          <img
+            src="/logo.svg"
+            alt="Main logo"
+            className="navbar-logo-image"
+          />
+          
         </a>
 
         {/* Desktop Navigation */}
