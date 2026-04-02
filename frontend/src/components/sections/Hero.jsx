@@ -75,11 +75,12 @@ const Hero = ({
             glowAmount={0.002}
             pillarWidth={3}
             pillarHeight={0.7}
-            noiseIntensity={0.5}
+            noiseIntensity={isMobile ? 0.03 : 0.1}
             pillarRotation={25}
             interactive={false}
             mixBlendMode="screen"
             quality="high"
+            adaptiveQuality={false}
           />
         </div>
 

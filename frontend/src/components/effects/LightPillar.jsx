@@ -34,7 +34,8 @@ const LightPillar = ({
   noiseIntensity = 0.5,       // Film grain/noise amount
   mixBlendMode = 'screen',    // CSS blend mode for compositing
   pillarRotation = 25,        // Initial rotation angle in degrees
-  quality = 'high'            // Render quality: 'high', 'medium', or 'low'
+  quality = 'high',           // Render quality: 'high', 'medium', or 'low'
+  adaptiveQuality = true      // Auto lower quality on mobile/low-end devices
 }) => {
 
   /* ═══════════════════════════════════════════════════════════════
@@ -89,8 +90,10 @@ const LightPillar = ({
     const isLowEndDevice = isMobile || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
 
     let effectiveQuality = quality;
-    if (isLowEndDevice && quality === 'high') effectiveQuality = 'medium';
-    if (isMobile && quality !== 'low') effectiveQuality = 'low';
+    if (adaptiveQuality) {
+      if (isLowEndDevice && quality === 'high') effectiveQuality = 'medium';
+      if (isMobile && quality !== 'low') effectiveQuality = 'low';
+    }
 
     /* Quality presets - iterations, pixel ratio, precision */
     const qualitySettings = {
@@ -406,7 +409,7 @@ const LightPillar = ({
       geometryRef.current = null;
       rafRef.current = null;
     };
-  }, [webGLSupported, quality]);
+  }, [webGLSupported, quality, adaptiveQuality]);
 
   /* ═══════════════════════════════════════════════════════════════
      PROP UPDATE EFFECTS
