@@ -79,7 +79,7 @@ const Hero = ({
             pillarRotation={25}
             interactive={false}
             mixBlendMode="screen"
-            quality="high"
+            quality={isMobile ? 'medium' : 'high'}
             adaptiveQuality={false}
           />
         </div>
