@@ -1,63 +1,288 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wholesale Mockup</title>
-    <style>
-      :root {
-        --bg: #0f172a;
-        --fg: #e2e8f0;
-        --link: #93c5fd;
-        --line: rgba(148, 163, 184, 0.2);
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        background: var(--bg);
-        color: var(--fg);
-        font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-      }
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-        padding: 0.85rem 1rem;
-        border-bottom: 1px solid var(--line);
-        background: rgba(2, 6, 23, 0.88);
-        backdrop-filter: blur(8px);
-      }
-      h1 {
-        margin: 0;
-        font-size: 0.95rem;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-      }
-      a {
-        color: var(--link);
-        text-decoration: none;
-        font-size: 0.85rem;
-        font-weight: 600;
-      }
-      iframe {
-        display: block;
-        width: 100%;
-        height: calc(100vh - 57px);
-        border: 0;
-        background: #fff;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Wholesale Mockup</h1>
-      <a href="../">Back to Portfolio</a>
-    </header>
-    <iframe src="../mockup/Wholesale/index.html" title="Wholesale Mockup"></iframe>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesale Store Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-100">
+        <div class="max-w-[1600px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="text-xl font-bold serif tracking-wider cursor-pointer" onclick="showPage('home')">
+                Wholesale Store Mockup
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <button onclick="showPage('home')" class="nav-link hover:opacity-60">Home</button>
+                <button onclick="showPage('shop')" class="nav-link hover:opacity-60">Shop All</button>
+                <button class="nav-link hover:opacity-60">New Arrivals</button>
+                <button class="nav-link hover:opacity-60">Exports</button>
+            </div>
+            <div class="flex items-center space-x-5">
+                <button class="hover:opacity-60"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="hover:opacity-60 relative">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <span class="absolute -top-1 -right-1 bg-red-800 text-white text-[8px] rounded-full w-3.5 h-3.5 flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page: Landing -->
+    <div id="home-page" class="pt-16">
+        <!-- Hero Section -->
+        <section class="relative h-[70vh] flex items-center bg-[#F3F0E9] overflow-hidden">
+            <div class="max-w-[1600px] mx-auto px-6 w-full grid md:grid-cols-2 items-center gap-12 relative z-10">
+                <div class="fade-in">
+                    <span class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mb-4 block">Est. 1994 • Global Curators</span>
+                    <h1 class="text-5xl md:text-7xl mb-6 leading-tight serif">Global treasures, <br><span class="italic font-light">hand-picked.</span></h1>
+                    <p class="text-gray-600 mb-8 max-w-sm text-sm leading-relaxed">
+                        From the chocolatiers of Brussels to the ateliers of Paris, we bring the world's finest exports directly to your door with uncompromising elegance.
+                    </p>
+                    <div class="flex gap-4">
+                        <button onclick="scrollToProducts()" class="btn-luxury-sm bg-black text-white border-black">
+                            Explore Gallery
+                        </button>
+                        <button onclick="showPage('shop')" class="btn-luxury-sm">
+                            New Arrivals
+                        </button>
+                    </div>
+                </div>
+                <div class="hidden md:block h-[55vh] relative hero-img-container shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=1200" 
+                         alt="Luxury Cosmetic and Products" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/5"></div>
+                </div>
+            </div>
+            <!-- Decorative circle -->
+            <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-[#E5E1D5] rounded-full opacity-30 blur-3xl"></div>
+        </section>
+
+        <!-- Quick Jump Grid -->
+        <section class="py-12 px-6 bg-white/50">
+            <div class="max-w-[1600px] mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div class="relative h-28 cursor-pointer group overflow-hidden border border-gray-100" onclick="document.getElementById('cat-beauty').scrollIntoView({behavior:'smooth'})">
+                        <div class="absolute inset-0 bg-white group-hover:bg-black transition-colors duration-300 flex items-center justify-center">
+                            <span class="serif text-sm italic group-hover:text-white">Makeup</span>
+                        </div>
+                    </div>
+                    <div class="relative h-28 cursor-pointer group overflow-hidden border border-gray-100" onclick="document.getElementById('cat-chocolate').scrollIntoView({behavior:'smooth'})">
+                        <div class="absolute inset-0 bg-white group-hover:bg-black transition-colors duration-300 flex items-center justify-center">
+                            <span class="serif text-sm italic group-hover:text-white">Chocolate</span>
+                        </div>
+                    </div>
+                    <div class="relative h-28 cursor-pointer group overflow-hidden border border-gray-100" onclick="document.getElementById('cat-home').scrollIntoView({behavior:'smooth'})">
+                        <div class="absolute inset-0 bg-white group-hover:bg-black transition-colors duration-300 flex items-center justify-center">
+                            <span class="serif text-sm italic group-hover:text-white">Home</span>
+                        </div>
+                    </div>
+                    <div class="relative h-28 cursor-pointer group overflow-hidden border border-gray-100" onclick="document.getElementById('cat-tea').scrollIntoView({behavior:'smooth'})">
+                        <div class="absolute inset-0 bg-white group-hover:bg-black transition-colors duration-300 flex items-center justify-center">
+                            <span class="serif text-sm italic group-hover:text-white">Tea & Coffee</span>
+                        </div>
+                    </div>
+                    <div class="relative h-28 cursor-pointer group overflow-hidden border border-gray-100" onclick="document.getElementById('cat-leather').scrollIntoView({behavior:'smooth'})">
+                        <div class="absolute inset-0 bg-white group-hover:bg-black transition-colors duration-300 flex items-center justify-center">
+                            <span class="serif text-sm italic group-hover:text-white">Leather Goods</span>
+                        </div>
+                    </div>
+                    <div class="relative h-28 cursor-pointer group overflow-hidden border border-gray-100" onclick="showPage('shop')">
+                        <div class="absolute inset-0 bg-[#E5E1D5] group-hover:bg-black transition-colors duration-300 flex items-center justify-center">
+                            <span class="serif text-sm italic group-hover:text-white">Shop All</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Category Sections -->
+        <div id="home-product-sections" class="max-w-[1600px] mx-auto px-6 pb-24">
+            <!-- Sections will be rendered here via JS -->
+        </div>
+    </div>
+
+    <!-- Page: Shop (Filterable Grid) -->
+    <div id="shop-page" class="hidden pt-24 pb-20">
+        <div class="max-w-[1600px] mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 border-b border-gray-200 pb-8">
+                <div>
+                    <h2 class="text-3xl serif mb-1">The Full Collection</h2>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Global Boutique Selection</p>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0">
+                    <button onclick="filterProducts('All')" class="category-pill active">All Products</button>
+                    <button onclick="filterProducts('Beauty')" class="category-pill">Beauty</button>
+                    <button onclick="filterProducts('Chocolate')" class="category-pill">Chocolate</button>
+                    <button onclick="filterProducts('Home')" class="category-pill">Home</button>
+                    <button onclick="filterProducts('Tea')" class="category-pill">Tea & Coffee</button>
+                    <button onclick="filterProducts('Leather')" class="category-pill">Leather Goods</button>
+                </div>
+            </div>
+            <div id="products-grid-all" class="product-grid"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-16 px-6">
+        <div class="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-xl serif tracking-widest">Wholesale Store Mockup</div>
+            <div class="flex space-x-12 text-[11px] uppercase tracking-[0.2em] font-medium text-gray-400">
+                <a href="#" class="hover:text-black transition">Boutiques</a>
+                <a href="#" class="hover:text-black transition">Provenance</a>
+                <a href="#" class="hover:text-black transition">Journal</a>
+                <a href="#" class="hover:text-black transition">Support</a>
+            </div>
+            <div class="text-[10px] text-gray-400">&copy; 2026 TheLumiNos.</div>
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+            // Beauty
+            { id: 1, name: "Midnight Rose Serum", category: "Beauty", price: 84, img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400", origin: "Paris" },
+            { id: 3, name: "Silk Veil Moisturizer", category: "Beauty", price: 62, img: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=400", origin: "Tokyo" },
+            { id: 9, name: "Velvet Lip Rouge", category: "Beauty", price: 38, img: "https://images.unsplash.com/photo-1586776977607-310e9c725c37?auto=format&fit=crop&q=80&w=400", origin: "London" },
+            { id: 12, name: "Botanical Face Oil", category: "Beauty", price: 72, img: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&q=80&w=400", origin: "Sydney" },
+            { id: 15, name: "Obsidian Lash Ink", category: "Beauty", price: 32, img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=400", origin: "Berlin" },
+            
+            // Chocolate
+            { id: 2, name: "Belgian Truffle Box", category: "Chocolate", price: 45, img: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&q=80&w=400", origin: "Brussels" },
+            { id: 5, name: "Dark Sea Salt Bars", category: "Chocolate", price: 28, img: "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&q=80&w=400", origin: "Switzerland" },
+            { id: 11, name: "White Honey Ganache", category: "Chocolate", price: 55, img: "https://images.unsplash.com/photo-1575032617751-6ddec2089882?auto=format&fit=crop&q=80&w=400", origin: "Vienna" },
+            { id: 14, name: "Single Estate Cocoa", category: "Chocolate", price: 22, img: "https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&q=80&w=400", origin: "Madagascar" },
+           
+            // Home
+            { id: 4, name: "Cedar & Fig Candle", category: "Home", price: 38, img: "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&q=80&w=400", origin: "Grasse" },
+            { id: 7, name: "Ceramic Diffuser", category: "Home", price: 110, img: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=400", origin: "Copenhagen" },
+            { id: 10, name: "Amber Room Spray", category: "Home", price: 42, img: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?auto=format&fit=crop&q=80&w=400", origin: "Dubai" },
+            { id: 17, name: "Marble Taper Holders", category: "Home", price: 95, img: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=400", origin: "Carrara" },
+
+            // Tea & Coffee
+            { id: 19, name: "Imperial Earl Grey", category: "Tea", price: 24, img: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&q=80&w=400", origin: "Darjeeling" },
+            { id: 20, name: "Arabica Reserve Bloom", category: "Tea", price: 32, img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=400", origin: "Ethiopia" },
+            { id: 21, name: "Silver Needle White", category: "Tea", price: 45, img: "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&q=80&w=400", origin: "Fujian" },
+            { id: 22, name: "Hand-Roasted Espresso", category: "Tea", price: 28, img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=400", origin: "Naples" },
+            { id: 23, name: "Cold Brew Infusions", category: "Tea", price: 18, img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=400", origin: "Portland" },
+
+            // Leather Goods
+            { id: 24, name: "Calfskin Card Case", category: "Leather", price: 120, img: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&q=80&w=400", origin: "Florence" },
+            { id: 27, name: "Silk-Lined Belt", category: "Leather", price: 145, img: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&q=80&w=400", origin: "Madrid" },
+            { id: 28, name: "Braided Key Tassel", category: "Leather", price: 45, img: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&q=80&w=400", origin: "Paris" },
+        ];
+
+        const categories = [
+            { id: 'cat-beauty', title: 'Makeup & Beauty', filter: 'Beauty', subtitle: 'Artisan skincare and cosmetics from global capitals.' },
+            { id: 'cat-chocolate', title: 'Fine Chocolates', filter: 'Chocolate', subtitle: 'Exquisite confections curated from historic European houses.' },
+            { id: 'cat-home', title: 'Home Fragrance', filter: 'Home', subtitle: 'Scented atmosphere creators for the modern sanctuary.' },
+            { id: 'cat-tea', title: 'Tea & Coffee', filter: 'Tea', subtitle: 'Rare leaves and small-batch beans sourced from volcanic soils.' },
+            { id: 'cat-leather', title: 'Leather Goods', filter: 'Leather', subtitle: 'Hand-stitched vachetta and suede accessories built for travel.' }
+        ];
+
+        function scrollToProducts() {
+            document.getElementById('home-product-sections').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function createProductCard(p) {
+            return `
+                <div class="product-card flex flex-col group">
+                    <div class="img-container relative mb-3">
+                        <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-all">
+                            <button class="w-full bg-white/95 backdrop-blur py-2 text-[9px] font-bold uppercase tracking-widest text-black border border-gray-100 shadow-sm hover:bg-black hover:text-white transition">Quick Add</button>
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-[13px] font-medium leading-tight mb-1 uppercase tracking-tight">${p.name}</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[11px] text-gray-400 italic font-serif">${p.origin}</span>
+                            <span class="text-[12px] font-semibold">$${p.price}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHome() {
+            const container = document.getElementById('home-product-sections');
+            container.innerHTML = '';
+
+            categories.forEach(cat => {
+                const filtered = products.filter(p => p.category === cat.filter);
+                const section = document.createElement('div');
+                section.id = cat.id;
+                section.className = 'mb-20 fade-in';
+                
+                section.innerHTML = `
+                    <div class="section-divider"></div>
+                    <div class="flex flex-col md:flex-row justify-between items-baseline mb-8 gap-4">
+                        <div>
+                            <h2 class="text-4xl serif mb-2 italic">${cat.title}</h2>
+                            <p class="text-sm text-gray-500 max-w-lg">${cat.subtitle}</p>
+                        </div>
+                        <button onclick="filterAndShop('${cat.filter}')" class="text-[10px] uppercase tracking-widest font-bold border-b border-black pb-1 hover:opacity-50 transition">View Collection</button>
+                    </div>
+                    <div class="product-grid">
+                        ${filtered.slice(0, 5).map(p => createProductCard(p)).join('')}
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+        }
+
+        function showPage(pageId) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (pageId === 'home') {
+                document.getElementById('home-page').classList.remove('hidden');
+                document.getElementById('shop-page').classList.add('hidden');
+            } else {
+                document.getElementById('home-page').classList.add('hidden');
+                document.getElementById('shop-page').classList.remove('hidden');
+                renderProductsAll('All');
+            }
+        }
+
+        function filterAndShop(cat) {
+            showPage('shop');
+            filterProducts(cat);
+        }
+
+        function renderProductsAll(filter) {
+            const grid = document.getElementById('products-grid-all');
+            const filtered = filter === 'All' ? products : products.filter(p => p.category === filter);
+            grid.innerHTML = filtered.map(p => createProductCard(p)).join('');
+        }
+
+        function filterProducts(cat) {
+            const pills = document.querySelectorAll('.category-pill');
+            pills.forEach(p => {
+                p.classList.remove('active');
+                if (p.textContent.includes(cat) || (cat === 'All' && p.textContent.includes('All'))) {
+                    p.classList.add('active');
+                }
+            });
+            renderProductsAll(cat);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    entry.target.style.opacity = 1;
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Init
+        renderHome();
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
 </html>

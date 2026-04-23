@@ -129,11 +129,11 @@ function App() {
       <Route path="/" element={<PortfolioPage />} />
       <Route
         path="/wholesale"
-        element={<StaticPageRedirect targetPath="wholesale/index.html" />}
+        element={<StaticPageRedirect targetPath="wholesale/" />}
       />
       <Route
         path="/boutique"
-        element={<StaticPageRedirect targetPath="boutique/index.html" />}
+        element={<StaticPageRedirect targetPath="boutique/" />}
       />
       <Route path="*" element={<PortfolioPage />} />
     </Routes>
