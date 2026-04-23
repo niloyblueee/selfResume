@@ -1,4 +1,5 @@
 import './index.css';
+import { Link, Route, Routes } from 'react-router-dom';
 
 // Layout Components
 import Navbar from './components/layout/Navbar';
@@ -25,7 +26,7 @@ import {
   contactContent,
 } from './data/content';
 
-function App() {
+function PortfolioPage() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -86,6 +87,91 @@ function App() {
       {/* Footer */}
       <Footer />
     </>
+  );
+}
+
+function MockupPage({ title, srcPath }) {
+  return (
+    <div style={{ minHeight: '100vh', background: '#0f172a' }}>
+      <header
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '1rem',
+          padding: '0.85rem 1rem',
+          background: 'rgba(2, 6, 23, 0.88)',
+          borderBottom: '1px solid rgba(148, 163, 184, 0.2)',
+          backdropFilter: 'blur(8px)',
+        }}
+      >
+        <h1
+          style={{
+            margin: 0,
+            color: '#e2e8f0',
+            fontSize: '0.95rem',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            fontWeight: 700,
+          }}
+        >
+          {title}
+        </h1>
+        <Link
+          to="/"
+          style={{
+            color: '#93c5fd',
+            textDecoration: 'none',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+          }}
+        >
+          Back to Portfolio
+        </Link>
+      </header>
+
+      <iframe
+        src={srcPath}
+        title={title}
+        style={{
+          display: 'block',
+          width: '100%',
+          height: 'calc(100vh - 57px)',
+          border: 'none',
+          background: '#fff',
+        }}
+      />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<PortfolioPage />} />
+      <Route
+        path="/wholesale"
+        element={
+          <MockupPage
+            title="Wholesale Mockup"
+            srcPath="/mockup/Wholesale/index.html"
+          />
+        }
+      />
+      <Route
+        path="/boutique"
+        element={
+          <MockupPage
+            title="Boutique Mockup"
+            srcPath="/mockup/BoutiqueShop/design2.html"
+          />
+        }
+      />
+      <Route path="*" element={<PortfolioPage />} />
+    </Routes>
   );
 }
 
