@@ -39,11 +39,24 @@ function getPublicAssetPath(assetPath) {
 function StaticPageRedirect({ targetPath }) {
   const url = getPublicAssetPath(targetPath);
 
-  if (typeof window !== 'undefined' && window.location.pathname !== new URL(url, window.location.origin).pathname) {
+  if (typeof window !== 'undefined') {
     window.location.replace(url);
   }
 
-  return null;
+  return (
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'grid',
+        placeItems: 'center',
+        background: '#0f172a',
+        color: '#e2e8f0',
+        fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
+      }}
+    >
+      Opening mockup...
+    </div>
+  );
 }
 
 function PortfolioPage() {
@@ -116,11 +129,11 @@ function App() {
       <Route path="/" element={<PortfolioPage />} />
       <Route
         path="/wholesale"
-        element={<StaticPageRedirect targetPath="wholesale/" />}
+        element={<StaticPageRedirect targetPath="wholesale/index.html" />}
       />
       <Route
         path="/boutique"
-        element={<StaticPageRedirect targetPath="boutique/" />}
+        element={<StaticPageRedirect targetPath="boutique/index.html" />}
       />
       <Route path="*" element={<PortfolioPage />} />
     </Routes>
