@@ -133,15 +133,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<PortfolioPage />} />
-      <Route
-        path="/wholesale"
-        element={<StaticPageRedirect targetPath="wholesale/index.html" />}
-      />
-      <Route
-        path="/boutique"
-        element={<StaticPageRedirect targetPath="boutique/index.html" />}
-      />
-      <Route path="*" element={<PortfolioPage />} />
+
     </Routes>
   );
 }
