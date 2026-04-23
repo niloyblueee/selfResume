@@ -26,6 +26,16 @@ import {
   contactContent,
 } from './data/content';
 
+function getPublicAssetPath(assetPath) {
+  const base = import.meta.env.BASE_URL || '/';
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+  const normalizedAsset = assetPath.startsWith('/')
+    ? assetPath.slice(1)
+    : assetPath;
+
+  return `${normalizedBase}${normalizedAsset}`;
+}
+
 function PortfolioPage() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -157,7 +167,7 @@ function App() {
         element={
           <MockupPage
             title="Wholesale Mockup"
-            srcPath="/mockup/Wholesale/index.html"
+            srcPath={getPublicAssetPath('mockup/Wholesale/index.html')}
           />
         }
       />
@@ -166,7 +176,7 @@ function App() {
         element={
           <MockupPage
             title="Boutique Mockup"
-            srcPath="/mockup/BoutiqueShop/design2.html"
+            srcPath={getPublicAssetPath('mockup/BoutiqueShop/design2.html')}
           />
         }
       />
