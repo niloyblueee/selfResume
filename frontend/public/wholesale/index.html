@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wholesale Mockup</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --fg: #e2e8f0;
+        --link: #93c5fd;
+        --line: rgba(148, 163, 184, 0.2);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid var(--line);
+        background: rgba(2, 6, 23, 0.88);
+        backdrop-filter: blur(8px);
+      }
+      h1 {
+        margin: 0;
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      a {
+        color: var(--link);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      iframe {
+        display: block;
+        width: 100%;
+        height: calc(100vh - 57px);
+        border: 0;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Wholesale Mockup</h1>
+      <a href="../">Back to Portfolio</a>
+    </header>
+    <iframe src="../mockup/Wholesale/index.html" title="Wholesale Mockup"></iframe>
+  </body>
+</html>

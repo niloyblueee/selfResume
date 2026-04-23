@@ -1,5 +1,5 @@
 import './index.css';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 // Layout Components
 import Navbar from './components/layout/Navbar';
@@ -34,6 +34,16 @@ function getPublicAssetPath(assetPath) {
     : assetPath;
 
   return `${normalizedBase}${normalizedAsset}`;
+}
+
+function StaticPageRedirect({ targetPath }) {
+  const url = getPublicAssetPath(targetPath);
+
+  if (typeof window !== 'undefined' && window.location.pathname !== new URL(url, window.location.origin).pathname) {
+    window.location.replace(url);
+  }
+
+  return null;
 }
 
 function PortfolioPage() {
@@ -100,85 +110,17 @@ function PortfolioPage() {
   );
 }
 
-function MockupPage({ title, srcPath }) {
-  return (
-    <div style={{ minHeight: '100vh', background: '#0f172a' }}>
-      <header
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 10,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '1rem',
-          padding: '0.85rem 1rem',
-          background: 'rgba(2, 6, 23, 0.88)',
-          borderBottom: '1px solid rgba(148, 163, 184, 0.2)',
-          backdropFilter: 'blur(8px)',
-        }}
-      >
-        <h1
-          style={{
-            margin: 0,
-            color: '#e2e8f0',
-            fontSize: '0.95rem',
-            letterSpacing: '0.04em',
-            textTransform: 'uppercase',
-            fontWeight: 700,
-          }}
-        >
-          {title}
-        </h1>
-        <Link
-          to="/"
-          style={{
-            color: '#93c5fd',
-            textDecoration: 'none',
-            fontSize: '0.85rem',
-            fontWeight: 600,
-          }}
-        >
-          Back to Portfolio
-        </Link>
-      </header>
-
-      <iframe
-        src={srcPath}
-        title={title}
-        style={{
-          display: 'block',
-          width: '100%',
-          height: 'calc(100vh - 57px)',
-          border: 'none',
-          background: '#fff',
-        }}
-      />
-    </div>
-  );
-}
-
 function App() {
   return (
     <Routes>
       <Route path="/" element={<PortfolioPage />} />
       <Route
         path="/wholesale"
-        element={
-          <MockupPage
-            title="Wholesale Mockup"
-            srcPath={getPublicAssetPath('mockup/Wholesale/index.html')}
-          />
-        }
+        element={<StaticPageRedirect targetPath="wholesale/" />}
       />
       <Route
         path="/boutique"
-        element={
-          <MockupPage
-            title="Boutique Mockup"
-            srcPath={getPublicAssetPath('mockup/BoutiqueShop/design2.html')}
-          />
-        }
+        element={<StaticPageRedirect targetPath="boutique/" />}
       />
       <Route path="*" element={<PortfolioPage />} />
     </Routes>
