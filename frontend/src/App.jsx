@@ -1,4 +1,5 @@
 import './index.css';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Layout Components
@@ -39,9 +40,14 @@ function getPublicAssetPath(assetPath) {
 function StaticPageRedirect({ targetPath }) {
   const url = getPublicAssetPath(targetPath);
 
-  if (typeof window !== 'undefined') {
-    window.location.replace(url);
-  }
+  useEffect(() => {
+    const targetUrl = new URL(url, window.location.origin);
+    const currentUrl = new URL(window.location.href);
+
+    if (currentUrl.pathname !== targetUrl.pathname) {
+      window.location.replace(targetUrl.href);
+    }
+  }, [url]);
 
   return (
     <div
@@ -129,11 +135,11 @@ function App() {
       <Route path="/" element={<PortfolioPage />} />
       <Route
         path="/wholesale"
-        element={<StaticPageRedirect targetPath="wholesale/" />}
+        element={<StaticPageRedirect targetPath="wholesale/index.html" />}
       />
       <Route
         path="/boutique"
-        element={<StaticPageRedirect targetPath="boutique/" />}
+        element={<StaticPageRedirect targetPath="boutique/index.html" />}
       />
       <Route path="*" element={<PortfolioPage />} />
     </Routes>
