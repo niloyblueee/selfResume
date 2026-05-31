@@ -1,6 +1,7 @@
 import './index.css';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Countdown from './countdown';
 
 // Layout Components
 import Navbar from './components/layout/Navbar';
@@ -133,6 +134,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<PortfolioPage />} />
+      <Route path="/countdown" element={<Countdown />} />
 
     </Routes>
   );
