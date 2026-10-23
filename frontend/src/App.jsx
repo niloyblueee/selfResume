@@ -38,6 +38,33 @@ function getPublicAssetPath(assetPath) {
   return `${normalizedBase}${normalizedAsset}`;
 }
 
+function ExternalRedirect({ to }) {
+  useEffect(() => {
+    window.location.replace(to);
+  }, [to]);
+
+  return (
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'grid',
+        placeItems: 'center',
+        background: '#090d16',
+        color: '#f472b6',
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        textAlign: 'center',
+        padding: '2rem',
+      }}
+    >
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ fontSize: '2.5rem' }}>💖</div>
+        <p style={{ margin: 0, fontSize: '1.2rem', fontWeight: 600 }}>Redirecting you to Fairoz's special question...</p>
+        <span style={{ fontSize: '0.9rem', color: '#94a3b8' }}>Please wait a moment ✨</span>
+      </div>
+    </div>
+  );
+}
+
 function StaticPageRedirect({ targetPath }) {
   const url = getPublicAssetPath(targetPath);
 
@@ -135,7 +162,10 @@ function App() {
     <Routes>
       <Route path="/" element={<PortfolioPage />} />
       <Route path="/countdown" element={<Countdown />} />
-
+      <Route
+        path="/myfairoz"
+        element={<ExternalRedirect to="https://fairoz-birthday-production.up.railway.app/" />}
+      />
     </Routes>
   );
 }
